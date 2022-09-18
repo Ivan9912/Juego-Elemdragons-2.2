@@ -1,0 +1,187 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: cornflowerblue;
+    flex-direction: column;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas {
+    border: 2.3px solid black;
+    border-radius: 10px;
+    background-color: aliceblue;
+    box-shadow: 36px 44px 15px -2px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 36px 44px 15px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 36px 44px 15px -2px rgba(0, 0, 0, 0.75);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+}
+
+
+button {
+    display: flex;
+    background-color: bisque;
+    color: black;
+    width: 150px;
+    justify-content: center;
+    border-radius: 10px;
+    border: transparent ;
+}
+.better {
+    transition: 500ms;
+    border-radius: 10px;
+    padding: 3px;
+    border: transparent;
+}
+.better:hover {
+    transform: translateX(5px);
+    box-shadow: 36px 44px 15px -2px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 36px 44px 15px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 36px 44px 15px -2px rgba(0, 0, 0, 0.75);
+    margin-bottom: 50px;
+    background-color: blue;
+    color: azure;
+    align-items: center;
+    padding: 10px;
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+}
+.better:active {
+    background-color: transparent;
+    color:rgb(255, 255, 255);
+    padding: 6px;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+.btn-moves {
+    width: 45px;
+    border-radius: 100%;
+    border: transparent;
+    font-size: 1.4rem;
+    transition: 450ms;
+}
+.btn-moves:hover {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+}
+.btn-moves:active {
+    background-color: rgba(255, 251, 0, 0.575);
+    -webkit-text-stroke: 1px rgb(2, 2, 2);
+    color: rgb(0, 0, 0);
+    padding: 0px;
+}
+#moveLeft:hover {
+    transform: translateX(-5px);
+}
+#moveRight:hover {
+    transform: translateX(5px);
+}
+#moveUp:hover {
+    transform: translateY(-5px);
+}
+#moveDown:hover {
+    transform: translateY(5px);
+}
+.conteiner-div-1 {
+    display: grid;
+    justify-items:center;
+    grid-template-rows: 26px 60px;
+    align-items: center;
+}
+.conteiner-div-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: 26px;
+    justify-items: center;
+    align-items: center;
+    /* margin-bottom: 20px; */
+}
+#nose {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    box-shadow: -111px -136px 206px -45px rgba(100,149,237,0.75) inset;
+    -webkit-box-shadow: -111px -136px 206px -45px rgba(100,149,237,0.75) inset;
+    -moz-box-shadow: -111px -136px 206px -45px rgba(100,149,237,0.75) inset;
+    border-radius: 100%;
+    filter: blur(10px) hue-rotate(166deg);
+    -webkit-filter: blur(10px) hue-rotate(166deg);
+    -moz-filter: blur(10px) hue-rotate(166deg);
+    transition: 650ms;
+}
+#nose:hover {
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    box-shadow: -77px -73px 110px 46px rgba(152,127,120,0.83) inset;
+    -webkit-box-shadow: -77px -73px 110px 46px rgba(152,127,120,0.83) inset;
+    -moz-box-shadow: -77px -73px 110px 46px rgba(152,127,120,0.83) inset;
+}
+
+.conteiner-btn-select-random {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 10px;
+    width: 50%;
+    border: transparent;
+    border-radius: 10px;
+}
+.section-select {
+    margin-top: 10px;
+}
+.btn-select-random, #selectOptions{
+    border-radius: 10px;
+    padding: 10px;
+    border: transparent;
+}
+
+/* #modal {
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    transition: all .5s;
+  } */
+  /* #modal p {
+    width: 60%;
+    height: 40%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  #modal {
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    transition: all .5s;
+  }
+
+  #modal + #selectDragon1:hover {
+    background: steelblue;
+    display: table;
+    margin: auto;
+    color: #fff;
+    line-height: 3;
+    padding: 0 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  } */

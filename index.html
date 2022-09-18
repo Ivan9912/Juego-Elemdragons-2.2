@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElemDragons V2.2</title>
+    <meta name = "description" content = "Pagina de juego pelea entre Dragones elementales">
+    <meta name = "keywords" content = "Game, Dragons, Fighting, Elements, Fire, Water, Earth">
+    <meta name = "author" content = "Ivan Maidana">
+    <meta name = "copyright" content = "Ivan Maidana 2022">
+    <meta http-equiv = "expires" content = "43200"/> <!-- quitar luego de terminar el juego-->
+    <link rel = "shorcut icon" href = "https://i.imgur.com/7bM63Aa.png" type = "image/x-png"/> 
+    <link rel = "icon" href = "https://i.imgur.com/7bM63Aa.png" type = "image/x-png"/>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body id="body">
+    <!-- <main>
+        <div id="modal">
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nihil id commodi ipsa vitae dolore molestiae minus enim. Nulla ut recusandae nemo quam autem minus totam impedit, quod accusamus optio?</p>
+        </div>
+    </main> -->
+    <section id="ver-mapa">
+        <canvas id="mapa" ></canvas>
+        <h1>Soy un canvas. usa los botones para mover...</h1>
+        <div class="conteiner-div-1">
+            <button id="moveUp" class="btn-moves">⬆</button>
+            <div class="conteiner-div-2">
+                <button id="moveLeft" class="btn-moves">⬅</button>
+                <button id="moveDown" class="btn-moves">⬇</button>
+                <button id="moveRight" class="btn-moves">➡</button>
+            </div>
+        </div>
+        <section class="section-select" id="section">
+            <select name="selectUno" id="selectOptions"></select>
+            <div class="conteiner-btn-select-random">
+                <button class="btn-select-random" id="select">Select</button>
+                <button class="btn-select-random" id="random">Random</button>
+            </div>
+        </section>
+        <span id="nose"></span>
+        <button id="btn-move" class="better">Mover Dragones</button>
+    </section>
+     <script src="js/index.js"></script> 
+</body>
+</html>
