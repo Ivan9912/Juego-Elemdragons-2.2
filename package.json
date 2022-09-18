@@ -1,0 +1,28 @@
+{
+  "name": "elemdragons",
+  "version": "2.2.0",
+  "description": "Web app of game of dragons figthers with elements",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ivan9912/Juego-V2.2.git"
+  },
+  "keywords": [
+    "Game",
+    "Dragons",
+    "Fighting",
+    "Elements",
+    "Fire",
+    "Water",
+    "Earth"
+  ],
+  "author": "Ivan Maidana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ivan9912/Juego-V2.2/issues"
+  },
+  "homepage": "https://github.com/Ivan9912/Juego-V2.2#readme"
+}
