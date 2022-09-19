@@ -1,0 +1,5 @@
+{
+    "editor.inlineSuggest.enabled": true,
+    "javascript.suggestionActions.enabled": false,
+    "typescript.suggestionActions.enabled": false
+}
