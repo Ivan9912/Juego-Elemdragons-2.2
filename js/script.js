@@ -162,6 +162,19 @@ function selectDragonPlayerBackEnd (nameDragonPlayer) {
     });
 };
 
+function actualizarCoordenadasDesdePintarCanvas (x, y) {
+     fetch (`http://localhost:8080/dragons/${playerId}/position`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify ({
+            x, // como es igual la variable en index.js solo se coloca "x" porque aca es "ejeX = req.body.x"...
+            y
+        })
+     });
+;}
+
 //---------------------
 
 
@@ -310,6 +323,7 @@ function selectPc () {
         selectOfPc (6);
     };
 };
+
 let numberSelectPc;
 let dragonSeleccionadoPc = [];
 function selectOfPc (numberDragonSelect) {
@@ -317,10 +331,8 @@ function selectOfPc (numberDragonSelect) {
     dragonSeleccionadoPc.unshift(dragonsList[numberSelectPc]);
     dragonSeleccionadoPc[0].x = map.width * 0.82;
     dragonSeleccionadoPc[0].y = map.height*0.50;
-    intervalo = setInterval(pintarCanvas, 30);
+    intervalo = setInterval(pintarCanvas, 50);
 };
-
-
 
 function pintarCanvas () {
     dragonSeleccionadoPlayer[0].x = dragonSeleccionadoPlayer[0].x + dragonSeleccionadoPlayer[0].velocidadX;
@@ -329,8 +341,10 @@ function pintarCanvas () {
     // dragonSeleccionadoPc.y = dragonSeleccionadoPc.y + dragonSeleccionadoPc.velocidadY;
     lienzo.clearRect(0, 0, map.width, map.height);
     lienzo.drawImage (imagenFondoCanvas, 0, 0, map.width, map.height);
-    dragonSeleccionadoPc[0].drawObjectDragons();
     dragonSeleccionadoPlayer[0].drawObjectDragons();
+    actualizarCoordenadasDesdePintarCanvas(dragonSeleccionadoPlayer[0].x, dragonSeleccionadoPlayer[0].y);
+    dragonSeleccionadoPc[0].drawObjectDragons();
+    
     
     if ((dragonSeleccionadoPlayer[0].velocidadX !== 0) || (dragonSeleccionadoPlayer[0].velocidadY !== 0)) {
     revisarColisiones(dragonSeleccionadoPc[0]);

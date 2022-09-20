@@ -16,6 +16,10 @@ class Player {
     asignarDragon (dragon) {
         this.dragon = dragon
     }
+    actualizarPosicion(x, y) {
+        this.x = x
+        this.y = y
+    }
 };
 
 class Dragon {
@@ -44,6 +48,20 @@ app.post (`/dragons/:playerIds`, (req, res) => {
         players[playerIndice].asignarDragon(creatDragon);
     }
     console.log(players);
+    res.end();
+});
+
+app.post(`/dragons/:playerIds/position`, (req, res) => {
+    const playerId = req.params.playerIds || ``;
+    const ejeX = req.body.x || 0;
+    const ejeY = req.body.y || 0;
+
+    const playerIndice = players.findIndex(playerIndex => playerId === playerIndex.id);
+
+    if (playerIndice >= 0) {
+        players[playerIndice].actualizarPosicion(ejeX, ejeY);
+    };
+
     res.end();
 });
 
