@@ -127,7 +127,7 @@ let lienzo = map.getContext(`2d`);
 let index = 0;
 let intervalo;
 
-
+let playerId = null;
 
 window.addEventListener (`keydown`, teclaPresionada);
 window.addEventListener (`keyup`, detenerMovimentoX);
@@ -143,11 +143,24 @@ function unirseAlJuego () {
         if (res.ok) {
             res.text().then(function (respuesta) {
                 console.log(respuesta);
+                playerId = respuesta;
             });
         };
     });
 };
 
+
+function selectDragonPlayerBackEnd (nameDragonPlayer) {
+    fetch (`http://localhost:8080/dragons/${playerId}`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            dragon1: nameDragonPlayer
+        })
+    });
+};
 
 //---------------------
 
@@ -167,17 +180,17 @@ function SeleccionRandom () {
     let aleatorio1 = random (1, 6);
 
     if (aleatorio1 == 1) {
-        selectOfPlayer (1);
+        selectOfPlayer (0);
     }else if (aleatorio1 == 2) {
-        selectOfPlayer (2);
+        selectOfPlayer (1);
     }else if (aleatorio1 == 3) {
-        selectOfPlayer (3);
+        selectOfPlayer (2);
     }else if (aleatorio1 == 4) {
-        selectOfPlayer (4);
+        selectOfPlayer (3);
     }else if (aleatorio1 == 5) {
-        selectOfPlayer (5);
+        selectOfPlayer (4);
     }else if (aleatorio1 == 6) {
-        selectOfPlayer (6);
+        selectOfPlayer (5);
     }
     contador++;
 };
@@ -267,8 +280,8 @@ function seleccionar () {
 };
 
 function selectOfPlayer (numberDragonSelect) {
-    numberSelect = numberDragonSelect - 1;
-    dragonSeleccionadoPlayer.unshift(dragonsList[numberSelect]);
+    dragonSeleccionadoPlayer.unshift(dragonsList[numberDragonSelect]);
+    selectDragonPlayerBackEnd(dragonsList[numberDragonSelect].name);
     
     slt.disabled=true;
     rdm.disabled=true;
@@ -276,6 +289,8 @@ function selectOfPlayer (numberDragonSelect) {
     rdm.style.visibility=`hidden`;
     selectPc ();
 };
+
+
 
 function selectPc () {
     let aleatorio = random (1, 6);
