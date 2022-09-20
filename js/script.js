@@ -5,7 +5,7 @@ const anchoMaximoDelMapa = 800;
 
 if (anchoDelMapa > anchoMaximoDelMapa) {
     anchoDelMapa = anchoMaximoDelMapa - 20;
-}
+};
 
 
 
@@ -49,15 +49,15 @@ dragonsList.push(new Dragons(`Dragón N°5`, `https://i.imgur.com/5PH2mR0.png`, 
 dragonsList.push(new Dragons(`Dragón N°6`, `https://i.imgur.com/nSXxdj8.png`, `Lava (Fuego)`, 1060, 90, 11, -15, 35, 35 - 15, `mascota-6`));
 
 const selects = document.querySelector (`#selectOptions`);
-selects.innerHTML = `<option value="selectDragon">-Select-</option>`
+selects.innerHTML = `<option value="selectDragon">-Select-</option>`;
 
 for (let i = 0; i < dragonsList.length; i++) {
     const options = dragonsList[i].name;
-    selects.innerHTML += `<option value="selectDragon${i+1}" class="opciones" id="option-${i+1}">${options}</option>`
-}
+    selects.innerHTML += `<option value="selectDragon${i+1}" class="opciones" id="option-${i+1}">${options}</option>`;
+};
 
 const secioness = document.querySelector (`#section`);
-secioness.addEventListener (`click`, holita)
+secioness.addEventListener (`click`, holita);
 
 
 const dragonsDescriptions = [];
@@ -90,10 +90,10 @@ function holita () {
             alert(dragonsDescriptions[4]);
         }else if (selects.value == `selectDragon6`) {
             alert(dragonsDescriptions[5]);
-        }
-    }
-    contador++
-}
+        };
+    };
+    contador++;
+};
 
 const verMapa = document.querySelector(`#ver-mapa`);
 
@@ -143,10 +143,10 @@ function unirseAlJuego () {
         if (res.ok) {
             res.text().then(function (respuesta) {
                 console.log(respuesta);
-            })
-        }
-    })
-}
+            });
+        };
+    });
+};
 
 
 //---------------------
@@ -164,7 +164,7 @@ function random (minimo, maximo) {
 };
 
 function SeleccionRandom () {
-    let aleatorio1 = random (1, 6)
+    let aleatorio1 = random (1, 6);
 
     if (aleatorio1 == 1) {
         selectOfPlayer (1);
@@ -179,9 +179,8 @@ function SeleccionRandom () {
     }else if (aleatorio1 == 6) {
         selectOfPlayer (6);
     }
-    contador++
-    
-}
+    contador++;
+};
 
 let numberSelect = 0;
 let dragonSeleccionadoPlayer = [];
@@ -200,10 +199,9 @@ function cambiarColorFondoBody() {
                 -moz-box-shadow: -2px -74px 125px 69px rgba(94,57,57,0.75) inset;`);
     } else {
         body.setAttribute(`style`, `background-color: cornflowerblue;`);
-    }
-    
+    };
     index++;
-}
+};
 
 function teclaPresionada (event) {
     //console.log(event.key)
@@ -238,8 +236,8 @@ function teclaPresionada (event) {
             alert (`jojo trampa`)
             selectPc()
             
-        }
-    }
+        };
+    };
 };
 
 let porMolesto = 0;
@@ -265,8 +263,7 @@ function seleccionar () {
                             Reinicia la página.`)
         slt.disabled=true;
         slt.style.visibility=`hidden`;
-    }
-
+    };
 };
 
 function selectOfPlayer (numberDragonSelect) {
@@ -281,7 +278,7 @@ function selectOfPlayer (numberDragonSelect) {
 };
 
 function selectPc () {
-    let aleatorio = random (1, 6)
+    let aleatorio = random (1, 6);
 
     //console.log (aleatorio)
     if (aleatorio == 1) {
@@ -296,9 +293,9 @@ function selectPc () {
         selectOfPc (5);
     }else if (aleatorio == 6) {
         selectOfPc (6);
-    }
+    };
 };
-let numberSelectPc 
+let numberSelectPc;
 let dragonSeleccionadoPc = [];
 function selectOfPc (numberDragonSelect) {
     numberSelectPc = numberDragonSelect - 1;
@@ -323,8 +320,8 @@ function pintarCanvas () {
     if ((dragonSeleccionadoPlayer[0].velocidadX !== 0) || (dragonSeleccionadoPlayer[0].velocidadY !== 0)) {
     revisarColisiones(dragonSeleccionadoPc[0]);
     detenerEnBordesDelMapa();
-    }
-}
+    };
+};
 
 function detenerEnBordesDelMapa() {
     // Verificar si las mascotas ya llegaron al borde del mapa
@@ -340,22 +337,21 @@ function detenerEnBordesDelMapa() {
   
     if (arribaJugador < arribaMapa) {
       dragonSeleccionadoPlayer[0].y = arribaMapa;
-    }
+    };
   
     if (arribaJugador > abajoMapa) {
       dragonSeleccionadoPlayer[0].y = abajoMapa;
-    }
+    };
   
     if (derechaJugador > derechaMapa) {
       dragonSeleccionadoPlayer[0].x = derechaMapa - dragonSeleccionadoPlayer[0].ancho;
-    }
+    };
   
     if (izquierdaJugador < izquierdaMapa) {
       dragonSeleccionadoPlayer[0].x = izquierdaMapa;
-    }
-  
+    };
     // console.log(abajoJugador, mascotaJugador.y);
-  }
+};
 
 function moveUp() {
     // const gravedad = () => dragonSeleccionadoPlayer[v]locidadY = 5;
@@ -390,23 +386,23 @@ function detenerMovimentoY() {
     // }
     // setInterval (gravedad, 30)
     dragonSeleccionadoPlayer[0].velocidadY = 0;
-}
+};
 
 function detenerMovimentoX() {
     dragonSeleccionadoPlayer[0].velocidadX = 0;
-}
+};
 
 
 function revisarColisiones(enemigo) {
-    const arribaEnemigo = enemigo.y
-    const abajoEnemigo = enemigo.y + enemigo.alto
-    const derechaEnemigo = enemigo.x + enemigo.ancho 
-    const izquierdaEnemigo = enemigo.x
+    const arribaEnemigo = enemigo.y;
+    const abajoEnemigo = enemigo.y + enemigo.alto;
+    const derechaEnemigo = enemigo.x + enemigo.ancho;
+    const izquierdaEnemigo = enemigo.x;
 
-    const arribaDragon = dragonSeleccionadoPlayer[0].y
-    const abajoDragon = dragonSeleccionadoPlayer[0].y + dragonSeleccionadoPlayer[0].alto
-    const derechaDragon = dragonSeleccionadoPlayer[0].x + dragonSeleccionadoPlayer[0].ancho
-    const izquierdaDragon = dragonSeleccionadoPlayer[0].x
+    const arribaDragon = dragonSeleccionadoPlayer[0].y;
+    const abajoDragon = dragonSeleccionadoPlayer[0].y + dragonSeleccionadoPlayer[0].alto;
+    const derechaDragon = dragonSeleccionadoPlayer[0].x + dragonSeleccionadoPlayer[0].ancho;
+    const izquierdaDragon = dragonSeleccionadoPlayer[0].x;
 
     if ((abajoDragon < arribaEnemigo) || (arribaDragon > abajoEnemigo) || (derechaDragon < izquierdaEnemigo) || (izquierdaDragon > derechaEnemigo) ) {
         return
@@ -414,8 +410,8 @@ function revisarColisiones(enemigo) {
     detenerMovimentoX();
     detenerMovimentoY();
     //clearInterval (intervalo);
-    alert (`holaaa colisioné con ${dragonSeleccionadoPc[0].name}`)
-}
+    alert (`holaaa colisioné con ${dragonSeleccionadoPc[0].name}`);
+};
 
 
 
