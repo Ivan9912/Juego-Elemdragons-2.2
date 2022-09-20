@@ -4,8 +4,22 @@ const express = require (`express`);
 
 const app = express();
 
-app.get(`/`, (req, res) => {
-    res.send(`Miren este es mi primer servidor creado con node.js y express.js je!`)
+const players = [];
+
+class Player {
+    constructor(id) {
+        this.id = id
+    }
+}
+
+app.get(`/unirse`, (req, res) => {
+    const id = `${Math.random()}`;
+
+    const jugador = new Player(id);
+    players.push(jugador)
+
+    res.setHeader(`Access-Control-Allow-Origin`, `*`)
+    res.send(`El jugador N° ${id} se loggeo.`)
 })
 
-app.listen(8081, () => {console.log(`Servidor funcionando`)});
+app.listen(8080, () => {console.log(`Servidor funcionando`)});

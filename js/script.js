@@ -132,6 +132,26 @@ let intervalo;
 window.addEventListener (`keydown`, teclaPresionada);
 window.addEventListener (`keyup`, detenerMovimentoX);
 window.addEventListener (`keyup`, detenerMovimentoY);
+window.addEventListener (`load`, unirseAlJuego);
+
+//----------
+//BACKEND
+
+function unirseAlJuego () {
+    fetch(`http://localhost:8080/unirse`).then(function (res) {
+            //console.log(res);
+        if (res.ok) {
+            res.text().then(function (respuesta) {
+                console.log(respuesta);
+            })
+        }
+    })
+}
+
+
+//---------------------
+
+
 
 const slt = document.querySelector (`#select`);
 const rdm = document.querySelector (`#random`);
