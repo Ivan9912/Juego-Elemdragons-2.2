@@ -177,18 +177,42 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
         if (res.ok) {
             res.json().then(function ({enemigos}){
                 //console.log(enemigos); 
-                if(enemigos[1].dragon !== false) {
-                console.log(enemigos[1].dragon.name);}
-                
-                 }) //"enemigos" es la misma variable de res.send 
+                enemigos.forEach(function (unEnemigoALaVez) {
+                    const dragonName = unEnemigoALaVez.dragon.name || ``;
+                    dragonEnemySelect = dragonName;
+                    enemyDragonSelect();
+                    //valorDragonSecond.push(dragonName)
+                    // console.log(dragonName);
+                });
+                //console.log(enemigos[1].dragon.name);
+                //valorDragonSecond.push( enemigos[1].dragon.name);
+                //console.log(valorDragonSecond[0])
+            }) //"enemigos" es la misma variable de res.send 
         };
     });
 };
-
+let dragonEnemySelect = null;
+function enemyDragonSelect () {
+    if (dragonEnemySelect === `Dragón N°1`|| 1) {
+        // alert(`nose`)
+        selectOfPc (0);
+    }else if (dragonEnemySelect === `Dragón N°2` || 2) {
+        selectOfPc (1);
+    }else if (dragonEnemySelect === `Dragón N°3` || 3) {
+        selectOfPc (2);
+    }else if (dragonEnemySelect === `Dragón N°4` || 4) {
+        selectOfPc (3);
+    }else if (dragonEnemySelect === `Dragón N°5` || 5) {
+        selectOfPc (4);
+    }else if (dragonEnemySelect === `Dragón N°6` || 6) {
+        selectOfPc (5);
+    };
+}
+// const valorDragonSecond = []; 
 
 //---------------------
 
-const selectSecondDragon = [];
+// const selectSecondDragon = [];
 
 const slt = document.querySelector (`#select`);
 const rdm = document.querySelector (`#random`);
@@ -280,17 +304,17 @@ let porMolesto = 0;
 
 function seleccionar () {
     if (selects.value == `selectDragon1`) {
-        selectOfPlayer (1);
+        selectOfPlayer (0);
     }else if (selects.value == `selectDragon2`) {
-        selectOfPlayer (2);
+        selectOfPlayer (1);
     }else if (selects.value == `selectDragon3`) {
-        selectOfPlayer (3);
+        selectOfPlayer (2);
     }else if (selects.value == `selectDragon4`) {
-        selectOfPlayer (4);
+        selectOfPlayer (3);
     }else if (selects.value == `selectDragon5`) {
-        selectOfPlayer (5);
+        selectOfPlayer (4);
     }else if (selects.value == `selectDragon6`) {
-        selectOfPlayer (6);
+        selectOfPlayer (5);
     } else if ((selects.value == `selectDragon`) && (porMolesto == 0))
         alert (`Selecciona a un dragón. Por favor.`);
         porMolesto++
@@ -310,7 +334,7 @@ function selectOfPlayer (numberDragonSelect) {
     rdm.disabled=true;
     slt.style.visibility=`hidden`;
     rdm.style.visibility=`hidden`;
-    selectOfPc(random (1, 6));
+    enemyDragonSelect(random (1, 6));
     //selectPc ();
     // habilitadorDelOtroPlayer++;
     // console.log(habilitadorDelOtroPlayer);
@@ -324,25 +348,25 @@ let habilitadorDelOtroPlayer = 0;
 
 
 
-function selectPc (SecondDragon) {
-    //let aleatorio = random (1, 6);
-    console.log(SecondDragon);
-    //console.log (aleatorio)
-    if (SecondDragon == 1) {
-        selectOfPc (0);
-    }else if (SecondDragon == 2) {
-        selectOfPc (1);
-    }else if (SecondDragon == 3) {
-        selectOfPc (2);
-    }else if (SecondDragon == 4) {
-        selectOfPc (3);
-    }else if (SecondDragon == 5) {
-        selectOfPc (4);
-    }else if (SecondDragon == 6) {
-        selectOfPc (5);
-    };
+// function selectPc (SecondDragon) {
+//     //let aleatorio = random (1, 6);
+//     //console.log(SecondDragon);
+//     //console.log (aleatorio)
+//     if (SecondDragon == 1) {
+//         selectOfPc (0);
+//     }else if (SecondDragon == 2) {
+//         selectOfPc (1);
+//     }else if (SecondDragon == 3) {
+//         selectOfPc (2);
+//     }else if (SecondDragon == 4) {
+//         selectOfPc (3);
+//     }else if (SecondDragon == 5) {
+//         selectOfPc (4);
+//     }else if (SecondDragon == 6) {
+//         selectOfPc (5);
+//     };
     
-};
+// };
 
 let dragonSeleccionadoPc = [];
 function selectOfPc (numberDragonSelect) {
