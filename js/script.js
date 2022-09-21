@@ -177,10 +177,11 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
         if (res.ok) {
             res.json().then(function ({enemigos}){
                 //console.log(enemigos); 
+                let dragonEnemySelect = null;
                 enemigos.forEach(function (unEnemigoALaVez) {
                     const dragonName = unEnemigoALaVez.dragon.name || ``;
                     dragonEnemySelect = dragonName;
-                    enemyDragonSelect();
+                    enemyDragonSelect(dragonEnemySelect);
                     //valorDragonSecond.push(dragonName)
                     // console.log(dragonName);
                 });
@@ -191,20 +192,21 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
         };
     });
 };
-let dragonEnemySelect = null;
-function enemyDragonSelect () {
-    if (dragonEnemySelect === `Dragón N°1`|| 1) {
+
+function enemyDragonSelect (selectDEnemy) {
+    //console.log(dragonEnemySelect);
+    if (selectDEnemy === `Dragón N°1`) {
         // alert(`nose`)
         selectOfPc (0);
-    }else if (dragonEnemySelect === `Dragón N°2` || 2) {
+    }else if (selectDEnemy === `Dragón N°2`) {
         selectOfPc (1);
-    }else if (dragonEnemySelect === `Dragón N°3` || 3) {
+    }else if (selectDEnemy === `Dragón N°3`) {
         selectOfPc (2);
-    }else if (dragonEnemySelect === `Dragón N°4` || 4) {
+    }else if (selectDEnemy === `Dragón N°4`) {
         selectOfPc (3);
-    }else if (dragonEnemySelect === `Dragón N°5` || 5) {
+    }else if (selectDEnemy === `Dragón N°5`) {
         selectOfPc (4);
-    }else if (dragonEnemySelect === `Dragón N°6` || 6) {
+    }else if (selectDEnemy === `Dragón N°6`) {
         selectOfPc (5);
     };
 }
@@ -334,7 +336,7 @@ function selectOfPlayer (numberDragonSelect) {
     rdm.disabled=true;
     slt.style.visibility=`hidden`;
     rdm.style.visibility=`hidden`;
-    enemyDragonSelect(random (1, 6));
+    //enemyDragonSelect(random (1, 6));
     //selectPc ();
     // habilitadorDelOtroPlayer++;
     // console.log(habilitadorDelOtroPlayer);
@@ -342,6 +344,7 @@ function selectOfPlayer (numberDragonSelect) {
     // if (habilitadorDelOtroPlayer == 2) {
     //     selectPc(selectSecondDragon[0]);
     // };
+    intervalo = setInterval(pintarCanvas, 50);
 };
 
 let habilitadorDelOtroPlayer = 0;
@@ -373,7 +376,7 @@ function selectOfPc (numberDragonSelect) {
     dragonSeleccionadoPc.unshift(dragonsList[numberDragonSelect]);
     dragonSeleccionadoPc[0].x = map.width * 0.82;
     dragonSeleccionadoPc[0].y = map.height*0.50;
-    intervalo = setInterval(pintarCanvas, 50);
+    
     
 };
 
