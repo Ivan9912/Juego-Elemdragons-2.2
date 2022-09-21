@@ -47,7 +47,7 @@ app.post (`/dragons/:playerIds`, (req, res) => {
     if (playerIndice >= 0) {
         players[playerIndice].asignarDragon(creatDragon);
     }
-    console.log(players);
+    
     res.end();
 });
 
@@ -62,7 +62,12 @@ app.post(`/dragons/:playerIds/position`, (req, res) => {
         players[playerIndice].actualizarPosicion(ejeX, ejeY);
     };
 
-    res.end();
+    const enemigos = players.filter(cadaJugador => playerId !== cadaJugador.id);
+
+    console.log(players);
+    res.send({
+        enemigos
+    });
 });
 
 app.listen(8080, () => {console.log(`Servidor funcionando`);});

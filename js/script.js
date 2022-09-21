@@ -142,7 +142,7 @@ function unirseAlJuego () {
             //console.log(res);
         if (res.ok) {
             res.text().then(function (respuesta) {
-                console.log(respuesta);
+                //console.log(respuesta);
                 playerId = respuesta;
             });
         };
@@ -160,6 +160,7 @@ function selectDragonPlayerBackEnd (nameDragonPlayer) {
             dragon1: nameDragonPlayer
         })
     });
+    
 };
 
 function actualizarCoordenadasDesdePintarCanvas (x, y) {
@@ -172,12 +173,22 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
             x, // como es igual la variable en index.js solo se coloca "x" porque aca es "ejeX = req.body.x"...
             y
         })
-     });
-;}
+     }).then (function(res){
+        if (res.ok) {
+            res.json().then(function ({enemigos}){
+                //console.log(enemigos); 
+                if(enemigos[1].dragon !== false) {
+                console.log(enemigos[1].dragon.name);}
+                
+                 }) //"enemigos" es la misma variable de res.send 
+        };
+    });
+};
+
 
 //---------------------
 
-
+const selectSecondDragon = [];
 
 const slt = document.querySelector (`#select`);
 const rdm = document.querySelector (`#random`);
@@ -257,13 +268,12 @@ function teclaPresionada (event) {
             moveRight ();
             break;
     }
-    if (contador >= 2) {
-        if (event.key == `t`) {
-            alert (`jojo trampa`)
-            selectPc()
-            
-        };
-    };
+    // if (contador >= 2) {
+    //     if (event.key == `t`) {
+    //         alert (`jojo trampa`);
+    //         selectPc();
+    //     };
+    // };
 };
 
 let porMolesto = 0;
@@ -300,38 +310,47 @@ function selectOfPlayer (numberDragonSelect) {
     rdm.disabled=true;
     slt.style.visibility=`hidden`;
     rdm.style.visibility=`hidden`;
-    selectPc ();
+    selectOfPc(random (1, 6));
+    //selectPc ();
+    // habilitadorDelOtroPlayer++;
+    // console.log(habilitadorDelOtroPlayer);
+    
+    // if (habilitadorDelOtroPlayer == 2) {
+    //     selectPc(selectSecondDragon[0]);
+    // };
 };
 
+let habilitadorDelOtroPlayer = 0;
 
 
-function selectPc () {
-    let aleatorio = random (1, 6);
 
+function selectPc (SecondDragon) {
+    //let aleatorio = random (1, 6);
+    console.log(SecondDragon);
     //console.log (aleatorio)
-    if (aleatorio == 1) {
+    if (SecondDragon == 1) {
+        selectOfPc (0);
+    }else if (SecondDragon == 2) {
         selectOfPc (1);
-    }else if (aleatorio == 2) {
+    }else if (SecondDragon == 3) {
         selectOfPc (2);
-    }else if (aleatorio == 3) {
+    }else if (SecondDragon == 4) {
         selectOfPc (3);
-    }else if (aleatorio == 4) {
+    }else if (SecondDragon == 5) {
         selectOfPc (4);
-    }else if (aleatorio == 5) {
+    }else if (SecondDragon == 6) {
         selectOfPc (5);
-    }else if (aleatorio == 6) {
-        selectOfPc (6);
     };
+    
 };
 
-let numberSelectPc;
 let dragonSeleccionadoPc = [];
 function selectOfPc (numberDragonSelect) {
-    numberSelectPc = numberDragonSelect - 1;
-    dragonSeleccionadoPc.unshift(dragonsList[numberSelectPc]);
+    dragonSeleccionadoPc.unshift(dragonsList[numberDragonSelect]);
     dragonSeleccionadoPc[0].x = map.width * 0.82;
     dragonSeleccionadoPc[0].y = map.height*0.50;
     intervalo = setInterval(pintarCanvas, 50);
+    
 };
 
 function pintarCanvas () {
