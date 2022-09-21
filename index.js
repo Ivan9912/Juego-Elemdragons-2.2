@@ -62,6 +62,7 @@ app.post(`/dragons/:playerIds/position`, (req, res) => {
         players[playerIndice].actualizarPosicion(ejeX, ejeY);
     };
 
+
     const enemigos = players.filter(cadaJugador => playerId !== cadaJugador.id);
 
     console.log(players);
