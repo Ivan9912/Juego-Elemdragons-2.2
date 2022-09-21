@@ -188,7 +188,7 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
 
                     ejeXSecondPlayer = unEnemigoALaVez.x;
                     ejeYSecondPlayer = unEnemigoALaVez.y; 
-                    consola(unEnemigoALaVez)
+                    //consola(unEnemigoALaVez)
 
                     enemyDragonSelect(dragonEnemySelect);
                     //valorDragonSecond.push(dragonName)
