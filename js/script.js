@@ -205,7 +205,7 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
 };
 
 let listaEnemigos = [];
-consola (listaEnemigos)
+
 
 let ejeXSecondPlayer = map.width * 0.82;
 let ejeYSecondPlayer = map.height*0.50;
@@ -419,6 +419,10 @@ function pintarCanvas () {
     // dragonSeleccionadoPc[0].y = ejeYSecondPlayer;
     lienzo.clearRect(0, 0, map.width, map.height);
     lienzo.drawImage (imagenFondoCanvas, 0, 0, map.width, map.height);
+    if ((dragonSeleccionadoPlayer[0].velocidadX !== 0) || (dragonSeleccionadoPlayer[0].velocidadY !== 0)) {
+        revisarColisiones(dragonSeleccionadoPc[0]);
+        detenerEnBordesDelMapa();
+        };
     // dragonSeleccionadoPlayer[0].drawObjectDragons();
     actualizarCoordenadasDesdePintarCanvas(dragonSeleccionadoPlayer[0].x, dragonSeleccionadoPlayer[0].y);
     //dragonSeleccionadoPc[0].drawObjectDragons();
@@ -428,10 +432,7 @@ function pintarCanvas () {
     
     
     
-    if ((dragonSeleccionadoPlayer[0].velocidadX !== 0) || (dragonSeleccionadoPlayer[0].velocidadY !== 0)) {
-    revisarColisiones(dragonSeleccionadoPc[0]);
-    detenerEnBordesDelMapa();
-    };
+    
 };
 
 function detenerEnBordesDelMapa() {

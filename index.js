@@ -28,15 +28,16 @@ class Dragon {
     }
 }
 
-app.get(`/unirse`, (req, res) => {
-    const id = `${Math.random()}`;
+let jugadorNumero = 0;
 
+app.get(`/unirse`, (req, res) => {
+    jugadorNumero++;
+    let id = `${jugadorNumero}`;
     const jugador = new Player(id);
     players.push(jugador);
 
-   
     res.send(id);
-})
+});
 
 app.post (`/dragons/:playerIds`, (req, res) => {
     const playerId = req.params.playerIds || ``;
