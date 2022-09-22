@@ -7,11 +7,14 @@ if (anchoDelMapa > anchoMaximoDelMapa) {
     anchoDelMapa = anchoMaximoDelMapa - 20;
 };
 
+
+
 mapa.width = anchoDelMapa;
 mapa.height = anchoDelMapa * 0.45;
 
+
 class Dragons {
-    constructor(name, image, element, health, atk, def, debFire, debWater, debEarth, id, x, y) {
+    constructor(name, image, element, health, atk, def, debFire, debWater, debEarth, id, x=map.width*0.02, y=map.height*0.50) {
         this.name = name
         this.image = image
         this.element = element 
@@ -34,76 +37,16 @@ class Dragons {
     drawObjectDragons() {
         lienzo.drawImage (this.mapfoto, this.x, this.y, this.ancho, this.alto);
     }//dragonSeleccionadoPlayer[0]
-};
+}
 
 const dragonsList = [];
 
-const verMapa = document.querySelector(`#ver-mapa`);
-
-const nose = document.querySelector(`#nose`);
-const btnNose2 = document.querySelector(`#btn-move`);
-const body = document.querySelector(`#body`)
-const moverUp = document.querySelector(`#moveUp`);
-const moverLeft = document.querySelector(`#moveLeft`);
-const moverDown = document.querySelector(`#moveDown`);
-const moverRight = document.querySelector(`#moveRight`);
-
-const playerNumers = document.querySelector(`#numero-jugador`);
-
-btnNose2.addEventListener(`click`, cambiarColorFondoBody);
-
-moverUp.addEventListener(`mousedown`, moveUp);
-moverUp.addEventListener(`mouseup`, detenerMovimentoY);
-moverLeft.addEventListener(`mousedown`, moveLeft);
-moverLeft.addEventListener(`mouseup`, detenerMovimentoX);
-moverDown.addEventListener(`mousedown`, moveDown);
-moverDown.addEventListener(`mouseup`, detenerMovimentoY);
-moverRight.addEventListener(`mousedown`, moveRight);
-moverRight.addEventListener(`mouseup`, detenerMovimentoX);
-
-let imagenFondoCanvas = new Image ();
-imagenFondoCanvas.src = `https://i.imgur.com/mCwQIbV.jpg`;
-imagenFondoCanvas.setAttribute (`style`, `box-shadow: 5px -6px 291px -54px rgba(255,247,247,0.75) inset;
--webkit-box-shadow: 5px -6px 291px -54px rgba(255,247,247,0.75) inset;
--moz-box-shadow: 5px -6px 291px -54px rgba(255,247,247,0.75) inset;`);
-
-let lienzo = map.getContext(`2d`);
-
-let index = 0;
-let intervalo;
-
-let playerId = null;
-
-window.addEventListener (`keydown`, teclaPresionada);
-window.addEventListener (`keyup`, detenerMovimentoX);
-window.addEventListener (`keyup`, detenerMovimentoY);
-window.addEventListener (`load`, unirseAlJuego);
-// x= map.width*0.02;
-// y= map.height*0.50
-
-function loggearPJSegunID (playerId) {
-    if (playerId % 2 == 0) {
-        alert (`Soy el Player N° 2`);
-        dragonsList.push(new Dragons(`Dragón N°1`, `https://i.imgur.com/GDYqWIE.png`, `Agua`, 1010, 65, 16, 35, -15, `Indistinto`, `mascota-1`, map.width * 0.82, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°2`, `https://i.imgur.com/2pcscRc.png`, `Fuego`, 1020, 70, 15, -15, `Indistinto`, 35, `mascota-2`, map.width * 0.82, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°3`, `https://i.imgur.com/vokks6I.png`, `Tierra`, 1030, 75, 14, `Indistinto`, 35, -15, `mascota-3`, map.width * 0.82, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°4`, `https://i.imgur.com/lzIglf5.png`, `Viento (Agua)`, 1040, 80, 13, 35 - 15, -15, 35, `mascota-4`, map.width * 0.82, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°5`, `https://i.imgur.com/5PH2mR0.png`, `Lodo (Tierra)`, 1050, 85, 12, 35, 35 - 15, -15, `mascota-5`, map.width * 0.82, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°6`, `https://i.imgur.com/nSXxdj8.png`, `Lava (Fuego)`, 1060, 90, 11, -15, 35, 35 - 15, `mascota-6`, map.width * 0.82, map.height*0.50));
-    }else {
-        alert (`Soy el Player N° 1`);
-        dragonsList.push(new Dragons(`Dragón N°1`, `https://i.imgur.com/GDYqWIE.png`, `Agua`, 1010, 65, 16, 35, -15, `Indistinto`, `mascota-1`, map.width*0.02, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°2`, `https://i.imgur.com/2pcscRc.png`, `Fuego`, 1020, 70, 15, -15, `Indistinto`, 35, `mascota-2`, map.width*0.02, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°3`, `https://i.imgur.com/vokks6I.png`, `Tierra`, 1030, 75, 14, `Indistinto`, 35, -15, `mascota-3`, map.width*0.02, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°4`, `https://i.imgur.com/lzIglf5.png`, `Viento (Agua)`, 1040, 80, 13, 35 - 15, -15, 35, `mascota-4`, map.width*0.02, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°5`, `https://i.imgur.com/5PH2mR0.png`, `Lodo (Tierra)`, 1050, 85, 12, 35, 35 - 15, -15, `mascota-5`, map.width*0.02, map.height*0.50));
-        dragonsList.push(new Dragons(`Dragón N°6`, `https://i.imgur.com/nSXxdj8.png`, `Lava (Fuego)`, 1060, 90, 11, -15, 35, 35 - 15, `mascota-6`, map.width*0.02, map.height*0.50));
-    };
-};
-
-
-
-
+dragonsList.push(new Dragons(`Dragón N°1`, `https://i.imgur.com/GDYqWIE.png`, `Agua`, 1010, 65, 16, 35, -15, `Indistinto`, `mascota-1`));
+dragonsList.push(new Dragons(`Dragón N°2`, `https://i.imgur.com/2pcscRc.png`, `Fuego`, 1020, 70, 15, -15, `Indistinto`, 35, `mascota-2`));
+dragonsList.push(new Dragons(`Dragón N°3`, `https://i.imgur.com/vokks6I.png`, `Tierra`, 1030, 75, 14, `Indistinto`, 35, -15, `mascota-3`));
+dragonsList.push(new Dragons(`Dragón N°4`, `https://i.imgur.com/lzIglf5.png`, `Viento (Agua)`, 1040, 80, 13, 35 - 15, -15, 35, `mascota-4`));
+dragonsList.push(new Dragons(`Dragón N°5`, `https://i.imgur.com/5PH2mR0.png`, `Lodo (Tierra)`, 1050, 85, 12, 35, 35 - 15, -15, `mascota-5`));
+dragonsList.push(new Dragons(`Dragón N°6`, `https://i.imgur.com/nSXxdj8.png`, `Lava (Fuego)`, 1060, 90, 11, -15, 35, 35 - 15, `mascota-6`));
 
 const selects = document.querySelector (`#selectOptions`);
 selects.innerHTML = `<option value="selectDragon">-Select-</option>`;
@@ -152,6 +95,47 @@ function holita () {
     contador++;
 };
 
+const verMapa = document.querySelector(`#ver-mapa`);
+
+const nose = document.querySelector(`#nose`);
+const btnNose2 = document.querySelector(`#btn-move`);
+const body = document.querySelector(`#body`)
+const moverUp = document.querySelector(`#moveUp`);
+const moverLeft = document.querySelector(`#moveLeft`);
+const moverDown = document.querySelector(`#moveDown`);
+const moverRight = document.querySelector(`#moveRight`);
+
+const playerNumers = document.querySelector(`#numero-jugador`);
+
+btnNose2.addEventListener(`click`, cambiarColorFondoBody);
+
+moverUp.addEventListener(`mousedown`, moveUp);
+moverUp.addEventListener(`mouseup`, detenerMovimentoY);
+moverLeft.addEventListener(`mousedown`, moveLeft);
+moverLeft.addEventListener(`mouseup`, detenerMovimentoX);
+moverDown.addEventListener(`mousedown`, moveDown);
+moverDown.addEventListener(`mouseup`, detenerMovimentoY);
+moverRight.addEventListener(`mousedown`, moveRight);
+moverRight.addEventListener(`mouseup`, detenerMovimentoX);
+
+let imagenFondoCanvas = new Image ();
+imagenFondoCanvas.src = `https://i.imgur.com/mCwQIbV.jpg`;
+imagenFondoCanvas.setAttribute (`style`, `box-shadow: 5px -6px 291px -54px rgba(255,247,247,0.75) inset;
+-webkit-box-shadow: 5px -6px 291px -54px rgba(255,247,247,0.75) inset;
+-moz-box-shadow: 5px -6px 291px -54px rgba(255,247,247,0.75) inset;`);
+
+let lienzo = map.getContext(`2d`);
+
+let index = 0;
+let intervalo;
+
+let playerId = null;
+
+window.addEventListener (`keydown`, teclaPresionada);
+window.addEventListener (`keyup`, detenerMovimentoX);
+window.addEventListener (`keyup`, detenerMovimentoY);
+window.addEventListener (`load`, unirseAlJuego);
+
 //----------
 //BACKEND
 
@@ -163,7 +147,6 @@ function unirseAlJuego () {
                 //console.log(respuesta);
                 playerId = respuesta;
                 identificadorDeJugador(playerId);
-                loggearPJSegunID(playerId);
             });
         };
     });
@@ -183,6 +166,7 @@ function selectDragonPlayerBackEnd (nameDragonPlayer) {
             dragon1: nameDragonPlayer
         })
     });
+    
 };
 
 function actualizarCoordenadasDesdePintarCanvas (x, y) {
@@ -227,8 +211,11 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
 };
 
 let listaEnemigos = [];
-// let ejeXSecondPlayer = map.width * 0.82;
-// let ejeYSecondPlayer = map.height*0.50;
+
+
+let ejeXSecondPlayer = map.width * 0.82;
+let ejeYSecondPlayer = map.height*0.50;
+
 function enemyDragonSelect (secondDragon) {
     let selectDEnemy = secondDragon.name;
     //console.log(dragonEnemySelect);
@@ -260,6 +247,7 @@ const slt = document.querySelector (`#select`);
 const rdm = document.querySelector (`#random`);
 slt.addEventListener (`click`, seleccionar);
 rdm.addEventListener (`click`, SeleccionRandom);
+
 
 function random (minimo, maximo) {
     return Math.floor (Math.random() * (maximo - minimo + 1) + minimo);
@@ -335,7 +323,7 @@ function teclaPresionada (event) {
         case `p`:
             consola();
             break;
-    };
+    }
     // if (contador >= 2) {
     //     if (event.key == `t`) {
     //         alert (`jojo trampa`);
@@ -343,11 +331,10 @@ function teclaPresionada (event) {
     //     };
     // };
 };
-
 function consola(uno, dos) {
     console.log(uno);
     console.log(dos);
-};
+}
 
 let porMolesto = 0;
 
@@ -383,15 +370,11 @@ function selectOfPlayer (numberDragonSelect) {
     rdm.disabled=true;
     slt.style.visibility=`hidden`;
     rdm.style.visibility=`hidden`;
-
-    // x=map.width*0.02;
-    // y=map.height*0.50;
-    // dragonSeleccionadoPlayer.x = x;
-    // dragonSeleccionadoPlayer.y = y;
     //enemyDragonSelect(random (1, 6));
     //selectPc ();
     // habilitadorDelOtroPlayer++;
     // console.log(habilitadorDelOtroPlayer);
+    
     // if (habilitadorDelOtroPlayer == 2) {
     //     selectPc(selectSecondDragon[0]);
     // };
@@ -399,6 +382,8 @@ function selectOfPlayer (numberDragonSelect) {
 };
 
 let habilitadorDelOtroPlayer = 0;
+
+
 
 // function selectPc (SecondDragon) {
 //     //let aleatorio = random (1, 6);
@@ -417,6 +402,7 @@ let habilitadorDelOtroPlayer = 0;
 //     }else if (SecondDragon == 6) {
 //         selectOfPc (5);
 //     };
+    
 // };
 
 let dragonSeleccionadoPc = [];
@@ -427,6 +413,9 @@ function selectOfPc (numberDragonSelect) {
     dragonSeleccionadoPc[0].y = ejeYSecondPlayer;
     
     // dragonSeleccionadoPlayer[0].drawObjectDragons();
+    
+    
+    
 };
 
 function pintarCanvas () {
@@ -446,10 +435,15 @@ function pintarCanvas () {
     dragonSeleccionadoPlayer[0].drawObjectDragons();
     dragonSeleccionadoPc[0].drawObjectDragons();
     //listaEnemigos.drawObjectDragons();
+    
+    
+    
+    
 };
 
 function detenerEnBordesDelMapa() {
     // Verificar si las mascotas ya llegaron al borde del mapa
+  
     const arribaMapa = map.height * 0.015;
     const abajoMapa = map.height * 0.51;
     const derechaMapa = map.width * 0.99;
@@ -499,6 +493,7 @@ function moveRight() {
     dragonSeleccionadoPlayer[0].velocidadX = 5;
 };
 
+
 function detenerMovimentoY() {
     //  const gravedad = () => {
     //     if ((dragonSeleccionadoPlayer[0].y >= 70) && (dragonSeleccionadoPlayer[0].y < 181)) {
@@ -514,6 +509,7 @@ function detenerMovimentoY() {
 function detenerMovimentoX() {
     dragonSeleccionadoPlayer[0].velocidadX = 0;
 };
+
 
 function revisarColisiones(enemigo) {
     const arribaEnemigo = enemigo.y;
