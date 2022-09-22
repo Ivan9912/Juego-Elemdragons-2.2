@@ -105,6 +105,8 @@ const moverLeft = document.querySelector(`#moveLeft`);
 const moverDown = document.querySelector(`#moveDown`);
 const moverRight = document.querySelector(`#moveRight`);
 
+const playerNumers = document.querySelector(`#numero-jugador`);
+
 btnNose2.addEventListener(`click`, cambiarColorFondoBody);
 
 moverUp.addEventListener(`mousedown`, moveUp);
@@ -144,11 +146,15 @@ function unirseAlJuego () {
             res.text().then(function (respuesta) {
                 //console.log(respuesta);
                 playerId = respuesta;
+                identificadorDeJugador(playerId);
             });
         };
     });
 };
 
+function identificadorDeJugador (playerNumber) {
+    playerNumers.innerHTML = playerNumber;
+};
 
 function selectDragonPlayerBackEnd (nameDragonPlayer) {
     fetch (`http://localhost:8080/dragons/${playerId}`, {
