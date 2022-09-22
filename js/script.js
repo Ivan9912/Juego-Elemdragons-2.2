@@ -194,6 +194,8 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
 
                     ejeXSecondPlayer = unEnemigoALaVez.x;
                     ejeYSecondPlayer = unEnemigoALaVez.y; 
+
+
                     //consola(unEnemigoALaVez)
 
                     // enemyDragonSelect(dragonEnemySelect);
@@ -365,6 +367,12 @@ function seleccionar () {
 function selectOfPlayer (numberDragonSelect) {
     dragonSeleccionadoPlayer.unshift(dragonsList[numberDragonSelect]);
     selectDragonPlayerBackEnd(dragonsList[numberDragonSelect].name);
+
+    if (playerId == 2) {
+        dragonSeleccionadoPlayer[0].x = map.width * 0.82;
+        ejeXSecondPlayer = map.width * 0.02;
+
+    };
     
     slt.disabled=true;
     rdm.disabled=true;
