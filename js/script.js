@@ -7,11 +7,8 @@ if (anchoDelMapa > anchoMaximoDelMapa) {
     anchoDelMapa = anchoMaximoDelMapa - 20;
 };
 
-
-
 mapa.width = anchoDelMapa;
 mapa.height = anchoDelMapa * 0.45;
-
 
 class Dragons {
     constructor(name, image, element, health, atk, def, debFire, debWater, debEarth, id, x=map.width*0.02, y=map.height*0.50) {
@@ -36,8 +33,8 @@ class Dragons {
     }
     drawObjectDragons() {
         lienzo.drawImage (this.mapfoto, this.x, this.y, this.ancho, this.alto);
-    }//dragonSeleccionadoPlayer[0]
-}
+    }
+};
 
 const dragonsList = [];
 
@@ -58,7 +55,6 @@ for (let i = 0; i < dragonsList.length; i++) {
 
 const secioness = document.querySelector (`#section`);
 secioness.addEventListener (`click`, holita);
-
 
 const dragonsDescriptions = [];
 
@@ -182,31 +178,19 @@ function actualizarCoordenadasDesdePintarCanvas (x, y) {
      }).then (function(res){
         if (res.ok) {
             res.json().then(function ({enemigos}){
-                //console.log(enemigos); 
                 
                 listaEnemigos = enemigos.map(function (unEnemigoALaVez) {
                     let dragonEnemySelect = null;
                     const dragonName = unEnemigoALaVez.dragon || ``;
                     dragonEnemySelect = dragonName;
 
-                    // unEnemigoALaVez.x = map.width * 0.82;   //ESTAS 2 VARIAS SI LAS QUITO, LOS PJS SE INTERMONEN EN LA MISMA COORDENADA. PERO AL COLOCAR ESTO NO SE ACTUALIZAR...
-                    // unEnemigoALaVez.y = map.height*0.50;
-
                     ejeXSecondPlayer = unEnemigoALaVez.x;
                     ejeYSecondPlayer = unEnemigoALaVez.y; 
 
-
-                    //consola(unEnemigoALaVez)
-
-                    // enemyDragonSelect(dragonEnemySelect);
-                    //valorDragonSecond.push(dragonName)
-                    // console.log(dragonName);
                     return dragonEnemySelect
                 });
                 enemyDragonSelect(listaEnemigos[0])
-                //console.log(enemigos[1].dragon.name);
-                //valorDragonSecond.push( enemigos[1].dragon.name);
-                //console.log(valorDragonSecond[0])
+               
             }) //"enemigos" es la misma variable de res.send 
         };
     });
@@ -220,9 +204,7 @@ let ejeYSecondPlayer = map.height*0.50;
 
 function enemyDragonSelect (secondDragon) {
     let selectDEnemy = secondDragon.name;
-    //console.log(dragonEnemySelect);
     if (selectDEnemy === `Dragón N°1`) {
-        // alert(`nose`)
         selectOfPc (0);
     }else if (selectDEnemy === `Dragón N°2`) {
         selectOfPc (1);
@@ -235,15 +217,10 @@ function enemyDragonSelect (secondDragon) {
     }else if (selectDEnemy === `Dragón N°6`) {
         selectOfPc (5);
     };
-    // if (selectDEnemy !== ``) {
-    //     alert (`funcionará?`)
-    // }
-}
-// const valorDragonSecond = []; 
+};
 
 //---------------------
 
-// const selectSecondDragon = [];
 
 const slt = document.querySelector (`#select`);
 const rdm = document.querySelector (`#random`);
@@ -326,17 +303,12 @@ function teclaPresionada (event) {
             consola();
             break;
     }
-    // if (contador >= 2) {
-    //     if (event.key == `t`) {
-    //         alert (`jojo trampa`);
-    //         selectPc();
-    //     };
-    // };
 };
+
 function consola(uno, dos) {
     console.log(uno);
     console.log(dos);
-}
+};
 
 let porMolesto = 0;
 
@@ -378,75 +350,36 @@ function selectOfPlayer (numberDragonSelect) {
     rdm.disabled=true;
     slt.style.visibility=`hidden`;
     rdm.style.visibility=`hidden`;
-    //enemyDragonSelect(random (1, 6));
-    //selectPc ();
-    // habilitadorDelOtroPlayer++;
-    // console.log(habilitadorDelOtroPlayer);
-    
-    // if (habilitadorDelOtroPlayer == 2) {
-    //     selectPc(selectSecondDragon[0]);
-    // };
+   
     intervalo = setInterval(pintarCanvas, 50);
 };
 
 let habilitadorDelOtroPlayer = 0;
 
-
-
-// function selectPc (SecondDragon) {
-//     //let aleatorio = random (1, 6);
-//     //console.log(SecondDragon);
-//     //console.log (aleatorio)
-//     if (SecondDragon == 1) {
-//         selectOfPc (0);
-//     }else if (SecondDragon == 2) {
-//         selectOfPc (1);
-//     }else if (SecondDragon == 3) {
-//         selectOfPc (2);
-//     }else if (SecondDragon == 4) {
-//         selectOfPc (3);
-//     }else if (SecondDragon == 5) {
-//         selectOfPc (4);
-//     }else if (SecondDragon == 6) {
-//         selectOfPc (5);
-//     };
-    
-// };
-
 let dragonSeleccionadoPc = [];
+
 function selectOfPc (numberDragonSelect) {
    
     dragonSeleccionadoPc.push(dragonsList[numberDragonSelect]);
     dragonSeleccionadoPc[0].x = ejeXSecondPlayer;
     dragonSeleccionadoPc[0].y = ejeYSecondPlayer;
     
-    // dragonSeleccionadoPlayer[0].drawObjectDragons();
-    
-    
-    
 };
 
 function pintarCanvas () {
     dragonSeleccionadoPlayer[0].x = dragonSeleccionadoPlayer[0].x + dragonSeleccionadoPlayer[0].velocidadX;
     dragonSeleccionadoPlayer[0].y = dragonSeleccionadoPlayer[0].y + dragonSeleccionadoPlayer[0].velocidadY;
-    // dragonSeleccionadoPc[0].x = ejeXSecondPlayer;
-    // dragonSeleccionadoPc[0].y = ejeYSecondPlayer;
+ 
     lienzo.clearRect(0, 0, map.width, map.height);
     lienzo.drawImage (imagenFondoCanvas, 0, 0, map.width, map.height);
     if ((dragonSeleccionadoPlayer[0].velocidadX !== 0) || (dragonSeleccionadoPlayer[0].velocidadY !== 0)) {
         revisarColisiones(dragonSeleccionadoPc[0]);
         detenerEnBordesDelMapa();
         };
-    // dragonSeleccionadoPlayer[0].drawObjectDragons();
     actualizarCoordenadasDesdePintarCanvas(dragonSeleccionadoPlayer[0].x, dragonSeleccionadoPlayer[0].y);
-    //dragonSeleccionadoPc[0].drawObjectDragons();
+    
     dragonSeleccionadoPlayer[0].drawObjectDragons();
     dragonSeleccionadoPc[0].drawObjectDragons();
-    //listaEnemigos.drawObjectDragons();
-    
-    
-    
-    
 };
 
 function detenerEnBordesDelMapa() {
@@ -476,16 +409,9 @@ function detenerEnBordesDelMapa() {
     if (izquierdaJugador < izquierdaMapa) {
       dragonSeleccionadoPlayer[0].x = izquierdaMapa;
     };
-    // console.log(abajoJugador, mascotaJugador.y);
 };
 
 function moveUp() {
-    // const gravedad = () => dragonSeleccionadoPlayer[v]locidadY = 5;
-    // if (dragonSeleccionadoPlayer.y > 70) {
-    //     dragonSeleccionadoPlayer.velocidadY = - 5;
-    // }else {
-    //     setInterval (gravedad, 30)
-    // }
     dragonSeleccionadoPlayer[0].velocidadY = - 5;
 };
 
@@ -503,14 +429,6 @@ function moveRight() {
 
 
 function detenerMovimentoY() {
-    //  const gravedad = () => {
-    //     if ((dragonSeleccionadoPlayer[0].y >= 70) && (dragonSeleccionadoPlayer[0].y < 181)) {
-    //         dragonSeleccionadoPlayer[0].velocidadY = 5
-    //     }else if (dragonSeleccionadoPlayer[0].y >= 181) { 
-    //         dragonSeleccionadoPlayer[0].velocidadY = 0;
-    //     }
-    // }
-    // setInterval (gravedad, 30)
     dragonSeleccionadoPlayer[0].velocidadY = 0;
 };
 
@@ -535,6 +453,5 @@ function revisarColisiones(enemigo) {
     }
     detenerMovimentoX();
     detenerMovimentoY();
-    //clearInterval (intervalo);
     alert (`holaaa colisionó con ${dragonSeleccionadoPc[0].name}`);
 };
