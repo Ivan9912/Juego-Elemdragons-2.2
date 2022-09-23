@@ -4,6 +4,7 @@ const express = require (`express`);
 const cors = require (`cors`);
 
 const app = express();
+app.use(express.static(`share_game`));
 app.use(cors());
 app.use(express.json());
 

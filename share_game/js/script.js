@@ -343,7 +343,6 @@ function selectOfPlayer (numberDragonSelect) {
     if (playerId == 2) {
         dragonSeleccionadoPlayer[0].x = map.width * 0.82;
         ejeXSecondPlayer = map.width * 0.02;
-
     };
     
     slt.disabled=true;
