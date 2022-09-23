@@ -106,13 +106,24 @@ const playerNumers = document.querySelector(`#numero-jugador`);
 btnNose2.addEventListener(`click`, cambiarColorFondoBody);
 
 moverUp.addEventListener(`mousedown`, moveUp);
+moverUp.addEventListener(`touchstart`, moveUp);
 moverUp.addEventListener(`mouseup`, detenerMovimentoY);
+moverUp.addEventListener(`touchend`, detenerMovimentoY);
+
 moverLeft.addEventListener(`mousedown`, moveLeft);
+moverLeft.addEventListener(`touchstart`, moveLeft);
 moverLeft.addEventListener(`mouseup`, detenerMovimentoX);
+moverLeft.addEventListener(`touchend`, detenerMovimentoX);
+
 moverDown.addEventListener(`mousedown`, moveDown);
+moverDown.addEventListener(`touchstart`, moveDown);
 moverDown.addEventListener(`mouseup`, detenerMovimentoY);
+moverDown.addEventListener(`touchend`, detenerMovimentoY);
+
 moverRight.addEventListener(`mousedown`, moveRight);
+moverRight.addEventListener(`touchstart`, moveRight);
 moverRight.addEventListener(`mouseup`, detenerMovimentoX);
+moverRight.addEventListener(`touchend`, detenerMovimentoX);
 
 let imagenFondoCanvas = new Image ();
 imagenFondoCanvas.src = `https://i.imgur.com/mCwQIbV.jpg`;
