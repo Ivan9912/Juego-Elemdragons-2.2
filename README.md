@@ -2,4 +2,4 @@
 
 ### Aclaraciones:
 
-- Este es mi versión 2.2 del proyecto que inicié en el curso básico de PLatzi. Intento mejorar mi codigo mientras aprendo. Es mi primer proyecto que tendrá backend.
+- Este es mi versión 2.2 del proyecto que inicié en el curso básico de Platzi. Intento mejorar mi codigo mientras aprendo. Es mi primer proyecto que tendrá backend.
