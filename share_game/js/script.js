@@ -213,7 +213,6 @@ const rdm = document.querySelector (`#random`);
 slt.addEventListener (`click`, seleccionar);
 rdm.addEventListener (`click`, SeleccionRandom);
 
-
 function random (minimo, maximo) {
     return Math.floor (Math.random() * (maximo - minimo + 1) + minimo);
 };
@@ -325,7 +324,6 @@ function selectOfPlayer (numberDragonSelect) {
 };
 
 let habilitadorDelOtroPlayer = 0;
-
 let dragonSeleccionadoPc = [];
 
 function selectOfPc (numberDragonSelect) {
@@ -363,8 +361,6 @@ function detenerEnBordesDelMapa() {
     const arribaJugador = dragonSeleccionadoPlayer[0].y;
     const derechaJugador = dragonSeleccionadoPlayer[0].x + dragonSeleccionadoPlayer[0].ancho;
     const izquierdaJugador = dragonSeleccionadoPlayer[0].x;
-
-
   
     if (arribaJugador < arribaMapa) {
       dragonSeleccionadoPlayer[0].y = arribaMapa;
@@ -399,7 +395,6 @@ function moveRight() {
     dragonSeleccionadoPlayer[0].velocidadX = 5;
 };
 
-
 function detenerMovimentoY() {
     dragonSeleccionadoPlayer[0].velocidadY = 0;
 };
@@ -407,7 +402,6 @@ function detenerMovimentoY() {
 function detenerMovimentoX() {
     dragonSeleccionadoPlayer[0].velocidadX = 0;
 };
-
 
 function revisarColisiones(enemigo) {
     const arribaEnemigo = enemigo.y;
@@ -426,4 +420,4 @@ function revisarColisiones(enemigo) {
     detenerMovimentoX();
     detenerMovimentoY();
     alert (`holaaa colisionó con ${dragonSeleccionadoPc[0].name}`);
-};
+}
