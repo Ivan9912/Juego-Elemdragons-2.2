@@ -159,7 +159,7 @@ window.addEventListener (`load`, unirseAlJuego);
 //BACKEND
 
 function unirseAlJuego () {
-    fetch(`http://192.168.0.126:8080/unirse`).then(function (res) {
+    fetch(`http://192.168:8080/unirse`).then(function (res) {
             //console.log(res);
         if (res.ok) {
             res.text().then(function (respuesta) {
@@ -176,7 +176,7 @@ function identificadorDeJugador (playerNumber) {
 };
 
 function selectDragonPlayerBackEnd (nameDragonPlayer) {
-    fetch (`http://192.168.0.126:8080/dragons/${playerId}`, {
+    fetch (`http://192.168:8080/dragons/${playerId}`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -188,7 +188,7 @@ function selectDragonPlayerBackEnd (nameDragonPlayer) {
 };
 
 function actualizarCoordenadasDesdePintarCanvas (x, y) {
-     fetch (`http://192.168.0.126:8080/dragons/${playerId}/position`, {
+     fetch (`http://192.168:8080/dragons/${playerId}/position`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -428,4 +428,4 @@ function revisarColisiones(enemigo) {
     detenerMovimentoX();
     detenerMovimentoY();
     alert (`holaaa colisionó con ${dragonSeleccionadoPc[0].name}`);
-}:
+};
