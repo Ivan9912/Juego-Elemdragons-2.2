@@ -33,10 +33,12 @@ let jugadorNumero = 0;
 
 app.get(`/unirse`, (req, res) => {
     jugadorNumero++;
-    let id = `${jugadorNumero}`;
-    const jugador = new Player(id);
-    players.push(jugador);
-
+    let id;
+    if (jugadorNumero < 5){
+        id = `${jugadorNumero}`;
+        const jugador = new Player(id);
+        players.push(jugador);
+    } 
     res.send(id);
 });
 
