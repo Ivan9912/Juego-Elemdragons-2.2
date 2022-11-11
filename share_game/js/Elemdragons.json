@@ -1,0 +1,74 @@
+[
+    {
+        "name" : "Dragón N°1",
+        "image" : "https://i.imgur.com/GDYqWIE.png",
+        "element" : "Agua",
+        "health" : 1010,
+        "atk" : 65,
+        "def" : 16,
+        "debFire" : 35,
+        "debWater" : -15,
+        "debEarth" : "Indistinto",
+        "id" : "mascota-1"
+    },
+    {
+        "name" : "Dragón N°2",
+        "image" : "https://i.imgur.com/2pcscRc.png",
+        "element" : "Fuego",
+        "health" : 1020,
+        "atk" : 70,
+        "def" : 15,
+        "debFire" : -15,
+        "debWater" : "Indistinto",
+        "debEarth" : 35,
+        "id" : "mascota-2"
+    },
+    {
+        "name" : "Dragón N°3",
+        "image" : "https://i.imgur.com/vokks6I.png",
+        "element" : "Tierra",
+        "health" : 1030,
+        "atk" : 75,
+        "def" : 14,
+        "debFire" : "Indistinto",
+        "debWater" : 35,
+        "debEarth" : -15,
+        "id" : "mascota-3"
+    },
+    {
+        "name" : "Dragón N°4",
+        "image" : "https://i.imgur.com/lzIglf5.png",
+        "element" : "Viento (Agua)",
+        "health" : 1040,
+        "atk" : 80,
+        "def" : 13,
+        "debFire" : 20,
+        "debWater" : -15,
+        "debEarth" : 35,
+        "id" : "mascota-4"
+    },
+    {
+        "name" : "Dragón N°5",
+        "image" : "https://i.imgur.com/5PH2mR0.png",
+        "element" : "Lodo (Tierra)",
+        "health" : 1050,
+        "atk" : 85,
+        "def" : 12,
+        "debFire" : 35,
+        "debWater" : 20,
+        "debEarth" : -15,
+        "id" : "mascota-5"
+    },
+    {
+        "name" : "Dragón N°6",
+        "image" : "https://i.imgur.com/nSXxdj8.png",
+        "element" : "Lava (Fuego)",
+        "health" : 1060,
+        "atk" : 90,
+        "def" : 11,
+        "debFire" : -15,
+        "debWater" : 35,
+        "debEarth" : 20,
+        "id" : "mascota-6"
+    }
+]

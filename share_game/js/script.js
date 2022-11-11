@@ -43,6 +43,29 @@ dragonsList.push(new Dragons(`Dragón N°4`, `https://i.imgur.com/lzIglf5.png`, 
 dragonsList.push(new Dragons(`Dragón N°5`, `https://i.imgur.com/5PH2mR0.png`, `Lodo (Tierra)`, 1050, 85, 12, 35, 35 - 15, -15, `mascota-5`));
 dragonsList.push(new Dragons(`Dragón N°6`, `https://i.imgur.com/nSXxdj8.png`, `Lava (Fuego)`, 1060, 90, 11, -15, 35, 35 - 15, `mascota-6`));
 
+// fetch("./share_game/js/Elemdragons.json").then((response) => {
+//     response.json();
+// }).then((pushing) => {
+//     pushing.forEach((info) => {
+//         const name = info.name;
+//         const image = info.image;
+//         const element = info.element; 
+//         const health = parseInt(info.health);
+//         const atk = parseInt(info.atk);
+//         const def = parseInt(info.def);
+//         const debFire = info.debFire == 'Indistinto' ? info.debFire : parseInt(info.debFire);
+//         const debWater = info.debWater == 'Indistinto' ? info.debWater : parseInt(info.debWater);
+//         const debEarth = info.debEarth == 'Indistinto' ? info.debEarth : parseInt(info.debEarth);
+//         const id = info.id;
+//         const elemDragons = new Dragons(name, image, element, health, atk, def, debFire, debWater, debEarth, id)
+//         console.log(elemDragons);
+//         dragonsList.push(elemDragons);
+//     });
+// }).catch(() => {
+//     console.log("Error de compilación");
+// });
+
+
 const selects = document.querySelector (`#selectOptions`);
 selects.innerHTML = `<option value="selectDragon">-Select-</option>`;
 
@@ -134,7 +157,7 @@ window.addEventListener (`load`, unirseAlJuego);
 //BACKEND
 
 function unirseAlJuego () {
-    fetch(`http://192.168.:8080/unirse`).then(function (res) {
+    fetch(`http://192.168.0.126:8080/unirse`).then(function (res) {
             //console.log(res);
         if (res.ok) {
             res.text().then(function (respuesta) {
@@ -151,7 +174,7 @@ function identificadorDeJugador (playerNumber) {
 };
 
 function selectDragonPlayerBackEnd (nameDragonPlayer) {
-    fetch (`http://192.168.:8080/dragons/${playerId}`, {
+    fetch (`http://192.168.0.126:8080/dragons/${playerId}`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -163,7 +186,7 @@ function selectDragonPlayerBackEnd (nameDragonPlayer) {
 };
 
 function actualizarCoordenadasDesdePintarCanvas (x, y) {
-     fetch (`http://192.168.:8080/dragons/${playerId}/position`, {
+     fetch (`http://192.168.0.126:8080/dragons/${playerId}/position`, {
         method: "post",
         headers: {
             "Content-Type": "application/json"
@@ -272,14 +295,14 @@ function teclaPresionada (event) {
             moveRight ();
             break;
         case `p`:
-            consola();
+            consola(dragonsList);
             break;
     }
 };
 
-function consola(uno, dos) {
+function consola(uno) {
     console.log(uno);
-    console.log(dos);
+    //console.log(dos);
 };
 
 let porMolesto = 0;
@@ -310,7 +333,7 @@ function selectOfPlayer (numberDragonSelect) {
     dragonSeleccionadoPlayer.unshift(dragonsList[numberDragonSelect]);
     selectDragonPlayerBackEnd(dragonsList[numberDragonSelect].name);
 
-    if (playerId == 2) {
+    if (playerId % 2 == 0) {
         dragonSeleccionadoPlayer[0].x = map.width * 0.82;
         ejeXSecondPlayer = map.width * 0.02;
     };
